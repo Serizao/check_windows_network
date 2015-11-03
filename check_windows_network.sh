@@ -9,9 +9,9 @@ adaptateur2='\interface réseau(hp nc326i pcie dual port gigabit server adapter 
 host='IP_DE VOTRE_SERVER'
 mdp='MOT_DE_PASSE'
 # execution de check nt avec les paramètre ci dessus pour récupérer les octet envoyés et reçus le tout stocké dans les variable $result1 et $result2
-/usr/lib/nagios/plugins/check_nt -H $host -s $mdp -p $port -v COUNTER -l "$adaptateur1" -c $critical -w $warning > sertriskem.tmp
+/usr/lib/nagios/plugins/check_nt -H $host -s $mdp -p $port -v COUNTER -l "$adaptateur1" -c $critical -w $warning > result.tmp
 read result1 < result.tmp
-/usr/lib/nagios/plugins/check_nt -H $host -s $mdp -p $port -v COUNTER -l "$adaptateur2" -c $critical -w $warning > sertriskem.tmp
+/usr/lib/nagios/plugins/check_nt -H $host -s $mdp -p $port -v COUNTER -l "$adaptateur2" -c $critical -w $warning > result.tmp
 read result2 < result.tmp
 
 # verification par rapport aux varibles $warning et $critical
