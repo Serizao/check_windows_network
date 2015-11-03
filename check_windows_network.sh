@@ -15,11 +15,11 @@ read result1 < sertriskem.tmp
 read result2 < sertriskem.tmp
 
 # verification par rapport aux varibles $warning et $critical
-if [ $result1 -lt  $critical ] && [ $result1 -gt $warning ] && [ $result2 -lt  $critical ] && [ $result2 -gt $warning ]; then
+if ([ $result1 -lt  $critical ] && [ $result1 -gt $warning ]) || ([ $result2 -lt  $critical ] && [ $result2 -gt $warning ]); then
   echo "Network WARNING - $result2 octets envoyés/s et $result1 octet reçus/s |bytes_in=$result1  bytes_out=$result2"
 fi
 
-if [ $result1 -gt $warning ]  && [ $result1 -gt $critical ] && [ $result2 -gt $warning ]  && [ $result2 -gt $critical ]; then
+if ([ $result1 -gt $warning ]  && [ $result1 -gt $critical ]) || ([ $result2 -gt $warning ]  && [ $result2 -gt $critical ]); then
   echo "Network CRITICAL - $result2 octets envoyés/s et $result1 octet reçus/s  |bytes_in=$result1  bytes_out=$result2"
 fi
 
